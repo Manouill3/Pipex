@@ -1,0 +1,10 @@
+total 52$
+-rw-r--r-- 1 mdegache 2024_angouleme     0 Jan 16 10:34 file$
+-rw-r--r-- 1 mdegache 2024_angouleme     0 Jan 16 09:22 file1$
+-rw-r--r-- 1 mdegache 2024_angouleme     0 Jan 16 09:22 file2$
+drwxr-xr-x 5 mdegache 2024_angouleme  4096 Jan 16 09:28 lib$
+-rw-r--r-- 1 mdegache 2024_angouleme   982 Jan 16 10:33 main.c$
+-rw-r--r-- 1 mdegache 2024_angouleme  2528 Jan 16 10:33 main.o$
+-rw-r--r-- 1 mdegache 2024_angouleme  1764 Jan 16 10:08 Makefile$
+-rwxr-xr-x 1 mdegache 2024_angouleme 29208 Jan 16 10:33 pipex$
+-rw-r--r-- 1 mdegache 2024_angouleme  1039 Jan 16 09:35 pipex.h$
