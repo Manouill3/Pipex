@@ -6,7 +6,7 @@
 #    By: mdegache <mdegache@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/14 12:30:55 by mdegache          #+#    #+#              #
-#    Updated: 2025/01/16 10:08:33 by mdegache         ###   ########.fr        #
+#    Updated: 2025/01/20 15:30:35 by mdegache         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,9 @@ GNL_FILES = lib/GNL/get_next_line.c\
 			
 LIBFT_FILES = lib/libft/ft_itoa.c
 
-SRC = main.c
+SRC = main.c\
+		parsing.c\
+		exec.c
 
 OBJ = $(SRC:.c=.o)
 OBJ_LIB = $(GNL_FILES:.c=.o) $(PRINTF_FILES:.c=.o) $(LIBFT_FILES:.c=.o)

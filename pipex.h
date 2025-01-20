@@ -6,7 +6,7 @@
 /*   By: mdegache <mdegache@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 12:48:11 by mdegache          #+#    #+#             */
-/*   Updated: 2025/01/17 11:00:07 by mdegache         ###   ########.fr       */
+/*   Updated: 2025/01/20 15:37:56 by mdegache         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,23 @@
 # include "unistd.h"
 # include "stdio.h"
 # include "string.h"
+# include "fcntl.h"
 
+typedef struct s_data
+{
+    int     fd_in;
+    int     fd_out;
+    int     valid_infile;
+    int     here_doc;
+    int     cmd_count;
+    char    **cmd_paths;
+    char    ***cmd_args;
+}   t_data;
+
+void    exec(t_data *param, int fd[2]);
+int open_fd(t_data *param, char **av);
+void init_val(t_data *param);
+int    check_access(char **av);
 
 
 #endif
