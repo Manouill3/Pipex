@@ -6,7 +6,7 @@
 /*   By: mdegache <mdegache@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 12:48:11 by mdegache          #+#    #+#             */
-/*   Updated: 2025/01/20 15:37:56 by mdegache         ###   ########.fr       */
+/*   Updated: 2025/01/21 14:23:03 by mdegache         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,21 +22,19 @@
 # include "string.h"
 # include "fcntl.h"
 
+typedef struct s_fd
+{
+    int fd_infile;
+    int fd_outfile;
+} t_fd;
+
 typedef struct s_data
 {
-    int     fd_in;
-    int     fd_out;
-    int     valid_infile;
-    int     here_doc;
     int     cmd_count;
-    char    **cmd_paths;
-    char    ***cmd_args;
+    t_fd    *fd_pipe;
 }   t_data;
 
-void    exec(t_data *param, int fd[2]);
-int open_fd(t_data *param, char **av);
-void init_val(t_data *param);
-int    check_access(char **av);
-
+void    init(int ac, char ** av, t_data *param);
+void    open_file(int ac, char **av, t_data *param);
 
 #endif
