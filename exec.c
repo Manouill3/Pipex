@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdegache <mdegache@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 10:54:28 by mdegache          #+#    #+#             */
-/*   Updated: 2025/01/22 10:19:56 by mdegache         ###   ########.fr       */
+/*   Updated: 2025/01/22 23:36:39 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ void    child_process(t_data *param, char **envp)
     char    **args;
 
     path = make_path(param, envp);
+    
 }
 
 void    parent_process()

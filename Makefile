@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mdegache <mdegache@student.42.fr>          +#+  +:+       +#+         #
+#    By: marvin <marvin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/14 12:30:55 by mdegache          #+#    #+#              #
-#    Updated: 2025/01/22 10:17:46 by mdegache         ###   ########.fr        #
+#    Updated: 2025/01/22 23:31:50 by marvin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,9 @@ GNL_FILES = lib/GNL/get_next_line.c\
         	lib/GNL/get_next_line_utils.c
 			
 LIBFT_FILES = lib/libft/ft_putstr_fd.c\
-				lib/libft/ft_putchar_fd.c
+				lib/libft/ft_putchar_fd.c\
+				lib/libft/ft_strncmp.c\
+				lib/libft/ft_split.c
 
 SRC = main.c\
 		init.c\
