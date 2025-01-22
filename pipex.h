@@ -6,7 +6,7 @@
 /*   By: mdegache <mdegache@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 12:48:11 by mdegache          #+#    #+#             */
-/*   Updated: 2025/01/21 14:23:03 by mdegache         ###   ########.fr       */
+/*   Updated: 2025/01/22 10:19:42 by mdegache         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,10 @@ typedef struct s_data
     t_fd    *fd_pipe;
 }   t_data;
 
-void    init(int ac, char ** av, t_data *param);
+void    init(int ac, char ** av, t_data *param, char **envp);
 void    open_file(int ac, char **av, t_data *param);
+char    *make_path(t_data *param, char **envp);
+void    ft_exec(t_data *param, char **envp);
+void    child_process(t_data *param, char **envp);
 
 #endif
