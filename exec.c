@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdegache <mdegache@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 10:54:28 by mdegache          #+#    #+#             */
-/*   Updated: 2025/01/23 11:44:44 by mdegache         ###   ########.fr       */
+/*   Updated: 2025/01/23 22:04:19 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void    child_process(t_data *param, char **envp, char **av, int count)
     args = set_args(ft_split(av[count], ' '), path);
     if (!path || !args)
         ft_free_tab(path, args);
-    if (execve(path, args, envp) == -1) // execve(args[0], args, envp);
+    if (execve(args[0], args, envp) == -1) // execve(args[0], args, envp);
     {
         perror("execve");
         ft_free_tab(path, args);
