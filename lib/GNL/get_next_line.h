@@ -6,7 +6,7 @@
 /*   By: mdegache <mdegache@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 10:18:00 by mdegache          #+#    #+#             */
-/*   Updated: 2024/11/06 11:33:00 by mdegache         ###   ########.fr       */
+/*   Updated: 2025/01/23 14:10:40 by mdegache         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,6 @@ char	*set_after_line(char *stash);
 char	*read_line(char *stash, int fd);
 size_t	ft_strlen(const char *str);
 char	*ft_strchr(const char *s, int c);
-char	*ft_strjoin(char *s1, char *s2);
+char	*ft_strjoin_gnl(char *s1, char *s2);
 
 #endif

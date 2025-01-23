@@ -6,7 +6,7 @@
 /*   By: mdegache <mdegache@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 13:44:10 by mdegache          #+#    #+#             */
-/*   Updated: 2024/11/05 09:54:00 by mdegache         ###   ########.fr       */
+/*   Updated: 2025/01/23 14:11:20 by mdegache         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ char	*read_line(char *stash, int fd)
 			return (NULL);
 		}
 		buffer[bytes] = '\0';
-		stash = ft_strjoin(stash, buffer);
+		stash = ft_strjoin_gnl(stash, buffer);
 		if (ft_strchr(buffer, '\n'))
 			break ;
 	}

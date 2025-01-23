@@ -6,7 +6,7 @@
 /*   By: mdegache <mdegache@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 12:48:11 by mdegache          #+#    #+#             */
-/*   Updated: 2025/01/22 10:19:42 by mdegache         ###   ########.fr       */
+/*   Updated: 2025/01/23 10:01:24 by mdegache         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,10 @@ typedef struct s_data
 
 void    init(int ac, char ** av, t_data *param, char **envp);
 void    open_file(int ac, char **av, t_data *param);
-char    *make_path(t_data *param, char **envp);
-void    ft_exec(t_data *param, char **envp);
-void    child_process(t_data *param, char **envp);
+char    *make_path(char **envp);
+void    ft_exec(t_data *param, char **envp, char **av, int count);
+void    child_process(t_data *param, char **envp, char **av, int count);
+void    ft_free_tab(char *path, char **args);
+char    **set_args(char **cmd_path, char *path);
 
 #endif

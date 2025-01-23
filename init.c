@@ -6,7 +6,7 @@
 /*   By: mdegache <mdegache@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 09:38:51 by mdegache          #+#    #+#             */
-/*   Updated: 2025/01/22 10:17:20 by mdegache         ###   ########.fr       */
+/*   Updated: 2025/01/23 08:59:53 by mdegache         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ void    init(int ac, char ** av, t_data *param, char **envp)
     {
         if (pipe(pipe_fd) == - 1)
             exit(1);
-        ft_exec(param, envp);
         count++;
+        ft_exec(param, envp, av, count);
     }
 }
 

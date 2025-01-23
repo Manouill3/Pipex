@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: marvin <marvin@student.42.fr>              +#+  +:+       +#+         #
+#    By: mdegache <mdegache@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/14 12:30:55 by mdegache          #+#    #+#              #
-#    Updated: 2025/01/22 23:31:50 by marvin           ###   ########.fr        #
+#    Updated: 2025/01/23 14:39:04 by mdegache         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,12 +32,16 @@ GNL_FILES = lib/GNL/get_next_line.c\
 LIBFT_FILES = lib/libft/ft_putstr_fd.c\
 				lib/libft/ft_putchar_fd.c\
 				lib/libft/ft_strncmp.c\
-				lib/libft/ft_split.c
+				lib/libft/ft_split.c\
+				lib/libft/ft_calloc.c\
+				lib/libft/ft_bzero.c\
+				lib/libft/ft_strjoin.c\
 
 SRC = main.c\
 		init.c\
 		exec.c\
-		parse_arg.c
+		parse_arg.c\
+		clean.c
 
 OBJ = $(SRC:.c=.o)
 OBJ_LIB = $(GNL_FILES:.c=.o) $(PRINTF_FILES:.c=.o) $(LIBFT_FILES:.c=.o)
