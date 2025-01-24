@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_arg.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mdegache <mdegache@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 09:55:05 by mdegache          #+#    #+#             */
-/*   Updated: 2025/01/23 21:56:30 by marvin           ###   ########.fr       */
+/*   Updated: 2025/01/24 09:02:28 by mdegache         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,16 @@ char    **make_path(char **envp)
 char    **set_args(char **args, char **path)
 {
     int i;
+    char *tmp;
 
     i = 0;
     while (path[i])
     {
-        if (access(path[i], R_OK | F_OK) != -1)
+        tmp = ft_strjoin(path[i], args[0]);
+        if (access(tmp, R_OK | F_OK) != -1)
         {
-            args[0] = ft_strjoin(path[i], args[0]);
+            free(args[0]);
+            args[0] = tmp;
             return (args);
         }
         i++;
