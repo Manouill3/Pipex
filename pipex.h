@@ -6,7 +6,7 @@
 /*   By: mdegache <mdegache@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 12:48:11 by mdegache          #+#    #+#             */
-/*   Updated: 2025/01/24 13:15:39 by mdegache         ###   ########.fr       */
+/*   Updated: 2025/01/27 09:27:51 by mdegache         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,22 +27,25 @@ typedef struct s_fd
 {
     int fd_infile;
     int fd_outfile;
+    int pid;
+    int pipe_fd[2];
 } t_fd;
 
-typedef struct s_data
+typedef struct
 {
     int     cmd_count;
-    t_fd    fd_pipe;
+    t_fd    fd;
 }   t_data;
 
 void    init(int ac, char ** av, t_data *param, char **envp);
 void    open_file(int ac, char **av, t_data *param);
 char    **make_path(char **envp);
-void    ft_exec(t_data *param, char **envp, char **av, int ac, int count);
-void    child_process(t_data *param, char **envp, char **av, int ac, int count);
+void    ft_exec(t_data *param, char **envp, char **av, int count);
+void    child_process(t_data *param, char **envp, char **av, int count);
 void    ft_free_tab(char **path, char **args);
 char    **set_args(char **cmd_path, char **path);
 void    free_one_tab(char **tab);
 void    parent_process(t_data *param);
+void    ft_dup_file(t_data *param, int count);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: mdegache <mdegache@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 09:55:05 by mdegache          #+#    #+#             */
-/*   Updated: 2025/01/24 09:02:28 by mdegache         ###   ########.fr       */
+/*   Updated: 2025/01/27 10:44:30 by mdegache         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ char    **make_path(char **envp)
     while (envp[i])
     {
         if (ft_strncmp("PATH", envp[i], 4) == 0)
-            return (ft_split(envp[i + 5], ':'));
+            return (ft_split(envp[i] + 5, ':'));
+        i++;
     }
     return (NULL);
 }
