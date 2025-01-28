@@ -6,7 +6,7 @@
 /*   By: mdegache <mdegache@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 12:48:11 by mdegache          #+#    #+#             */
-/*   Updated: 2025/01/27 09:27:51 by mdegache         ###   ########.fr       */
+/*   Updated: 2025/01/28 09:10:28 by mdegache         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,11 @@ void    open_file(int ac, char **av, t_data *param);
 char    **make_path(char **envp);
 void    ft_exec(t_data *param, char **envp, char **av, int count);
 void    child_process(t_data *param, char **envp, char **av, int count);
-void    ft_free_tab(char **path, char **args);
 char    **set_args(char **cmd_path, char **path);
 void    free_one_tab(char **tab);
 void    parent_process(t_data *param);
 void    ft_dup_file(t_data *param, int count);
+void    exec_cmd(char **envp, char **av, int count);
+void    close_all(t_data *param);
 
 #endif

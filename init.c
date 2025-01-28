@@ -6,7 +6,7 @@
 /*   By: mdegache <mdegache@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 09:38:51 by mdegache          #+#    #+#             */
-/*   Updated: 2025/01/27 09:27:38 by mdegache         ###   ########.fr       */
+/*   Updated: 2025/01/28 11:06:41 by mdegache         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,13 @@ void    init(int ac, char ** av, t_data *param, char **envp)
     count = 0;
     param->cmd_count = ac - 3;
     open_file(ac, av, param);
-    param->fd.pipe_fd[1] = param->fd.fd_infile;
-    param->fd.pipe_fd[0] = param->fd.fd_outfile;
     while (count < param->cmd_count)
     {
         if (pipe(param->fd.pipe_fd) == - 1)
             exit(1);
         ft_exec(param, envp, av, count);
-        count++; 
+        count++;
     }
+    while (wait(NULL) > 0)
+        ;
 }

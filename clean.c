@@ -3,33 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   clean.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mdegache <mdegache@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 09:05:35 by mdegache          #+#    #+#             */
-/*   Updated: 2025/01/23 22:05:45 by marvin           ###   ########.fr       */
+/*   Updated: 2025/01/28 09:09:34 by mdegache         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
-
-void    ft_free_tab(char **path, char **args)
-{
-    if (!path && !args)
-        exit(127);
-    if (!args)
-    {
-        free_one_tab(path);
-        exit(127);
-    }
-    if (!path)
-    {
-        free_one_tab(args);
-        exit(127);
-    }
-    free_one_tab(args);
-    free_one_tab(path);
-    exit(127);    
-}
 
 void    free_one_tab(char **tab)
 {
@@ -39,4 +20,16 @@ void    free_one_tab(char **tab)
     while (tab[i])
         free(tab[i++]);
     free (tab);
+}
+
+void    close_all(t_data *param)
+{
+    if (param->fd.fd_infile != -1)
+        close (param->fd.fd_infile);
+    if (param->fd.fd_outfile != -1)
+        close (param->fd.fd_outfile);
+    if (param->fd.pipe_fd[0] != -1)
+        close (param->fd.pipe_fd[0]);
+    if (param->fd.pipe_fd[1] != -1)
+        close (param->fd.pipe_fd[1]);
 }

@@ -6,7 +6,7 @@
 #    By: mdegache <mdegache@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/14 12:30:55 by mdegache          #+#    #+#              #
-#    Updated: 2025/01/23 14:39:04 by mdegache         ###   ########.fr        #
+#    Updated: 2025/01/28 08:24:27 by mdegache         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,7 +50,7 @@ all: $(NAME)
 
 $(NAME): $(OBJ) $(OBJ_LIB)
 		@$(CC) $(SRC) $(LIBFT_FILES) $(GNL_FILES) $(PRINTF_FILES) $(CFLAGS) -o $(NAME)
-		@echo "$(RED)SUCCESS$(RESET)"
+		@echo "$(GREEN)SUCCESS$(RESET)"
 
 %.o: %.c
 	@$(CC) $(CFLAGS) -c $< -o $@
@@ -61,7 +61,7 @@ clean:
 
 fclean: clean
 	@rm -f $(NAME)
-	@echo "$(GREEN)FCLEAN$(RESET)"
+	@echo "$(RED)FCLEAN$(RESET)"
 
 re: fclean all
 
