@@ -1,0 +1,112 @@
+[31;1m------------------------------------------------------------------------------------------------------------------------
+TEST 7:
+[0m[1m./pipex "infiles/basic.txt" "cat -e" "grep nonexistingword" "outfiles/nonexistingfile" 
+< infiles/basic.txt cat -e | grep nonexistingword > outfiles/nonexistingfile_tester
+
+[0m[31;1mExit status:[0m
+Your exit status: 0
+Orig exit status: 1
+
+[31;1m------------------------------------------------------------------------------------------------------------------------
+TEST 13:
+[0m[1m./pipex "infiles/infile_without_permissions" "cat -e" "cat -e" "outfiles/outfile" 
+< infiles/infile_without_permissions cat -e | cat -e > outfiles/outfile_tester
+
+[0m[31;1mOutput: [0m
+[31;1moutfiles/outfile:                                               [32;1moutfiles/outfile_tester:[0m
+$$							      <
+
+[31;1m------------------------------------------------------------------------------------------------------------------------
+TEST 14:
+[0m[1m./pipex "infiles/basic.txt" "cat -e" "cat -e" "outfiles/outfile_without_permissions" 
+< infiles/basic.txt cat -e | cat -e > outfiles/outfile_without_permissions_tester
+
+[0m[31;1mExit status:[0m
+Your exit status: 0
+Orig exit status: 1
+
+[31;1m------------------------------------------------------------------------------------------------------------------------
+TEST 15:
+[0m[1m./pipex "infiles/basic.txt" "sleep 3" "cat -e" "outfiles/outfile_without_permissions" 
+< infiles/basic.txt sleep 3 | cat -e > outfiles/outfile_without_permissions_tester
+
+[0m[31;1mExit status:[0m
+Your exit status: 0
+Orig exit status: 1
+
+[31;1m------------------------------------------------------------------------------------------------------------------------
+TEST 16:
+[0m[1m./pipex "nonexistingfile" "cat -e" "cat -e" "outfiles/outfile_without_permissions" 
+< nonexistingfile cat -e | cat -e > outfiles/outfile_without_permissions_tester
+
+[0m[31;1mExit status:[0m
+Your exit status: 0
+Orig exit status: 1
+
+[31;1m------------------------------------------------------------------------------------------------------------------------
+TEST 17:
+[0m[1m./pipex "infiles/basic.txt" "nonexistingcommand" "cat -e" "outfiles/outfile" 
+< infiles/basic.txt nonexistingcommand | cat -e > outfiles/outfile_tester
+
+[0m[31;1mLeaks:  [0m
+Valgrind found an error. To get valgrind output, you have 2 options
+a) run the tester like this: bash run.sh --show-valgrind
+b) run: valgrind --leak-check=full --errors-for-leak-kinds=all ./pipex "infiles/basic.txt" "nonexistingcommand" "cat -e" "outfiles/outfile" 
+[31;1m------------------------------------------------------------------------------------------------------------------------
+TEST 18:
+[0m[1m./pipex "infiles/basic.txt" "cat -e" "nonexistingcommand" "outfiles/outfile" 
+< infiles/basic.txt cat -e | nonexistingcommand > outfiles/outfile_tester
+
+[0m[31;1mExit status:[0m
+Your exit status: 0
+Orig exit status: 127
+
+[31;1mLeaks:  [0m
+Valgrind found an error. To get valgrind output, you have 2 options
+a) run the tester like this: bash run.sh --show-valgrind
+b) run: valgrind --leak-check=full --errors-for-leak-kinds=all ./pipex "infiles/basic.txt" "cat -e" "nonexistingcommand" "outfiles/outfile" 
+[31;1m------------------------------------------------------------------------------------------------------------------------
+TEST 19:
+[0m[1m./pipex "infiles/basic.txt" "cat -e" "cat -nonexistingflag" "outfiles/outfile" 
+< infiles/basic.txt cat -e | cat -nonexistingflag > outfiles/outfile_tester
+
+[0m[31;1mExit status:[0m
+Your exit status: 0
+Orig exit status: 1
+
+[31;1m------------------------------------------------------------------------------------------------------------------------
+TEST 24:
+[0m[1m./pipex "infiles/basic.txt" "" "cat -e" "outfiles/outfile" 
+< infiles/basic.txt  | cat -e > outfiles/outfile_tester
+
+[0m[31;1mLeaks:  [0m
+Valgrind found an error. To get valgrind output, you have 2 options
+a) run the tester like this: bash run.sh --show-valgrind
+b) run: valgrind --leak-check=full --errors-for-leak-kinds=all ./pipex "infiles/basic.txt" "" "cat -e" "outfiles/outfile" 
+[31;1m------------------------------------------------------------------------------------------------------------------------
+TEST 25:
+[0m[1m./pipex "infiles/basic.txt" "cat -e" "" "outfiles/outfile" 
+< infiles/basic.txt cat -e |  > outfiles/outfile_tester
+
+[0m[31;1mLeaks:  [0m
+Valgrind found an error. To get valgrind output, you have 2 options
+a) run the tester like this: bash run.sh --show-valgrind
+b) run: valgrind --leak-check=full --errors-for-leak-kinds=all ./pipex "infiles/basic.txt" "cat -e" "" "outfiles/outfile" 
+[31;1m------------------------------------------------------------------------------------------------------------------------
+TEST 28:
+[0m[1m./pipex "here_doc" "EOF" "cat -e" "cat -e" "outfiles/outfile" 
+cat -e << EOF | cat -e >> outfiles/outfile_tester
+
+[0m[31;1mOutput: [0m
+[31;1moutfiles/outfile:                                               [32;1moutfiles/outfile_tester:[0m
+							      >	This is random text echoed into existing outfiles before 
+							      >	applying pipex. This allows to verify whether your program
+							      >	and the original replace or append existing text
+							      >	Hello$$
+							      >	Hello$$
+							      >	Hello$$
+
+[31;1mLeaks:  [0m
+Valgrind found an error. To get valgrind output, you have 2 options
+a) run the tester like this: bash run.sh --show-valgrind
+b) run: valgrind --leak-check=full --errors-for-leak-kinds=all ./pipex "here_doc" "EOF" "cat -e" "cat -e" "outfiles/outfile" 

@@ -6,7 +6,7 @@
 /*   By: mdegache <mdegache@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 09:38:51 by mdegache          #+#    #+#             */
-/*   Updated: 2025/01/28 11:06:41 by mdegache         ###   ########.fr       */
+/*   Updated: 2025/01/29 14:52:33 by mdegache         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,9 @@ void    open_file(int ac, char **av, t_data *param)
     param->fd.fd_outfile = -1;
     if (access(av[1], R_OK | F_OK) != -1)
         param->fd.fd_infile = open(av[1], O_RDONLY, 0644);
-    else 
+    else
         perror("infile");
+
     if (access(av[ac - 1], F_OK | W_OK) != -1)
         param->fd.fd_outfile = open(av[ac - 1], O_WRONLY | O_CREAT | O_TRUNC, 0644);
     else 
@@ -39,8 +40,7 @@ void    init(int ac, char ** av, t_data *param, char **envp)
     open_file(ac, av, param);
     while (count < param->cmd_count)
     {
-        if (pipe(param->fd.pipe_fd) == - 1)
-            exit(1);
+        if (pipe(param->fd.pipe_fd) == - 1)exit(1);
         ft_exec(param, envp, av, count);
         count++;
     }

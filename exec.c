@@ -6,7 +6,7 @@
 /*   By: mdegache <mdegache@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 10:54:28 by mdegache          #+#    #+#             */
-/*   Updated: 2025/01/28 14:29:57 by mdegache         ###   ########.fr       */
+/*   Updated: 2025/01/29 09:07:41 by mdegache         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void    ft_exec(t_data *param, char **envp, char **av, int count)
 
 void    ft_dup_file(t_data *param, int count)
 {
-    if (param->cmd_count - 2 == count)
+    if (param->cmd_count - 1 == count)
     {
         if (param->fd.pipe_fd[0] != -1)
             close(param->fd.pipe_fd[0]);
@@ -46,7 +46,7 @@ void    ft_dup_file(t_data *param, int count)
     }
 }
 
-void    child_process(t_data *param, char **envp, char **av,int count)
+void    child_process(t_data *param, char **envp, char **av, int count)
 {
     if (count == 0)
     {
@@ -78,8 +78,8 @@ void    exec_cmd(char **envp, char **av, int count)
     if (!args)
         free_one_tab(path);
     if (execve(args[0], args, envp) == -1)
-    {
-        perror("execve");
+        {
+            perror("execve");
         free_one_tab(path);
         free_one_tab(args);
         exit (127);

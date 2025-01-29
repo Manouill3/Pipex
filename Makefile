@@ -6,7 +6,7 @@
 #    By: mdegache <mdegache@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/14 12:30:55 by mdegache          #+#    #+#              #
-#    Updated: 2025/01/28 08:24:27 by mdegache         ###   ########.fr        #
+#    Updated: 2025/01/29 13:34:53 by mdegache         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,6 +36,7 @@ LIBFT_FILES = lib/libft/ft_putstr_fd.c\
 				lib/libft/ft_calloc.c\
 				lib/libft/ft_bzero.c\
 				lib/libft/ft_strjoin.c\
+				lib/libft/ft_itoa.c\
 
 SRC = main.c\
 		init.c\
@@ -46,7 +47,7 @@ SRC = main.c\
 OBJ = $(SRC:.c=.o)
 OBJ_LIB = $(GNL_FILES:.c=.o) $(PRINTF_FILES:.c=.o) $(LIBFT_FILES:.c=.o)
 
-all: $(NAME)
+all: $(NAME) clean
 
 $(NAME): $(OBJ) $(OBJ_LIB)
 		@$(CC) $(SRC) $(LIBFT_FILES) $(GNL_FILES) $(PRINTF_FILES) $(CFLAGS) -o $(NAME)
