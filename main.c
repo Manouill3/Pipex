@@ -6,7 +6,7 @@
 /*   By: mdegache <mdegache@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 09:30:44 by mdegache          #+#    #+#             */
-/*   Updated: 2025/01/27 13:39:23 by mdegache         ###   ########.fr       */
+/*   Updated: 2025/01/31 08:54:53 by mdegache         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,6 @@ int main(int ac, char ** av, char **envp)
         ft_putstr_fd("Wrong format, try again\n", 2);
         exit(1);
     }
-    init(ac, av, &param, envp);
+    param.ac = ac;
+    init(av, &param, envp);
 }

@@ -6,7 +6,7 @@
 /*   By: mdegache <mdegache@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 09:38:51 by mdegache          #+#    #+#             */
-/*   Updated: 2025/01/29 14:52:33 by mdegache         ###   ########.fr       */
+/*   Updated: 2025/01/31 14:07:38 by mdegache         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,13 @@ void    open_file(int ac, char **av, t_data *param)
     }
 }
 
-void    init(int ac, char ** av, t_data *param, char **envp)
+void    init(char ** av, t_data *param, char **envp)
 {
     int count;
 
     count = 0;
-    param->cmd_count = ac - 3;
-    open_file(ac, av, param);
+    param->cmd_count = param->ac - 3;
+    open_file(param->ac, av, param);
     while (count < param->cmd_count)
     {
         if (pipe(param->fd.pipe_fd) == - 1)exit(1);

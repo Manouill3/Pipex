@@ -6,7 +6,7 @@
 /*   By: mdegache <mdegache@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 12:48:11 by mdegache          #+#    #+#             */
-/*   Updated: 2025/01/29 14:52:37 by mdegache         ###   ########.fr       */
+/*   Updated: 2025/01/31 14:07:00 by mdegache         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,12 @@ typedef struct s_fd
 
 typedef struct
 {
+    int     ac;
     int     cmd_count;
     t_fd    fd;
 }   t_data;
 
-void    init(int ac, char ** av, t_data *param, char **envp);
+void    init(char ** av, t_data *param, char **envp);
 void    open_file(int ac, char **av, t_data *param);
 char    **make_path(char **envp);
 void    ft_exec(t_data *param, char **envp, char **av, int count);
@@ -48,5 +49,6 @@ void    parent_process(t_data *param);
 void    ft_dup_file(t_data *param, int count);
 void    exec_cmd(char **envp, char **av, int count);
 void    close_all(t_data *param);
+void    verif_fd(int count, t_data *param);
 
 #endif
