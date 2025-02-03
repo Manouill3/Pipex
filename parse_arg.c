@@ -6,7 +6,7 @@
 /*   By: mdegache <mdegache@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 09:55:05 by mdegache          #+#    #+#             */
-/*   Updated: 2025/02/03 15:33:33 by mdegache         ###   ########.fr       */
+/*   Updated: 2025/02/03 16:01:48 by mdegache         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ char    **set_args(char **args, char **path)
     char *tmp;
 
     i = 0;
+    if (access(args[0], X_OK | F_OK))
+        return (args);
     if (!args[0])
     {
         free_one_tab(args);
