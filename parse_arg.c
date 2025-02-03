@@ -6,7 +6,7 @@
 /*   By: mdegache <mdegache@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 09:55:05 by mdegache          #+#    #+#             */
-/*   Updated: 2025/01/31 10:11:28 by mdegache         ###   ########.fr       */
+/*   Updated: 2025/02/03 15:33:33 by mdegache         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,15 +32,21 @@ char    **set_args(char **args, char **path)
     char *tmp;
 
     i = 0;
+    if (!args[0])
+    {
+        free_one_tab(args);
+        return(NULL);
+    }
     while (path[i])
     {
         tmp = ft_strjoin(path[i], args[0]);
-        if (access(tmp, R_OK | F_OK) != -1)
+        if (access(tmp, X_OK | F_OK) != -1)
         {
             free(args[0]);
             args[0] = tmp;
             return (args);
         }
+        free(tmp);
         i++;
     }
     return (args);

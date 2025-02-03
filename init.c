@@ -6,7 +6,7 @@
 /*   By: mdegache <mdegache@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 09:38:51 by mdegache          #+#    #+#             */
-/*   Updated: 2025/01/31 14:07:38 by mdegache         ###   ########.fr       */
+/*   Updated: 2025/02/03 15:33:49 by mdegache         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ void    open_file(int ac, char **av, t_data *param)
     {
         if (access(av[ac - 1], F_OK) == -1)
             param->fd.fd_outfile = open(av[ac - 1], O_WRONLY | O_CREAT | O_TRUNC, 0644);
-        perror("Outfile");
     }
 }
 

@@ -6,7 +6,7 @@
 /*   By: mdegache <mdegache@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 10:54:28 by mdegache          #+#    #+#             */
-/*   Updated: 2025/01/31 14:06:08 by mdegache         ###   ########.fr       */
+/*   Updated: 2025/02/03 15:29:06 by mdegache         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,8 +76,13 @@ void    exec_cmd(char **envp, char **av, int count)
     if (!path)
         return ;
     args = set_args(ft_split(av[count + 2], ' '), path);
-    if (!args)
+    if (!args || !args[0])
+    {
+        if (args)
+            free_one_tab(args);
         free_one_tab(path);
+        exit(127);
+    }
     if (execve(args[0], args, envp) == -1)
         {
             perror("execve");
